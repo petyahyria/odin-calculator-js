@@ -13,16 +13,16 @@ let operator;
 let operate = (operator, a, b) => {
     switch (operator) {
         case "+":
-            add(a, b);
+            return add(a, b);
             break;
         case "-":
-            substract(a, b);
+            return substract(a, b);
             break;
         case "*":
-            multiply(a, b);
+            return multiply(a, b);
             break;
         case "/":
-            divide(a, b);
+            return divide(a, b);
             break;
     }
 }
@@ -42,6 +42,7 @@ buttons.addEventListener("click", (e) => {
                 break;
             case "btn+":
                 input.value += "+";
+                operator = "+";
                 break;
             case "btn4":
                 input.value += "4";
@@ -54,6 +55,7 @@ buttons.addEventListener("click", (e) => {
                 break;
             case "btn-":
                 input.value += "-";
+                operator = "-";
                 break;
             case "btn7":
                 input.value += "7";
@@ -66,6 +68,7 @@ buttons.addEventListener("click", (e) => {
                 break;
             case "btn*":
                 input.value += "*";
+                operator = "*";
                 break;
             case "btn0":
                 input.value += "0";
@@ -78,6 +81,24 @@ buttons.addEventListener("click", (e) => {
                 break;
             case "btn/":
                 input.value += "/";
+                operator = "/";
+                break;
+            case "btn-equals":
+                let numbers = input.value.split(operator);
+                console.log(numbers);
+                firstNumber = +numbers[0];
+                console.log(firstNumber);
+                secondNumber = +numbers[1];
+                console.log(secondNumber);
+                console.log(operator);
+                if( !numbers[0] || !numbers[1]){
+                    input.value = "error";
+                    firstNumber = null;
+                    secondNumber = null;
+                    operator = null;
+                    break;
+                }
+                input.value = `${operate(operator, firstNumber, secondNumber)}`;
                 break;
         }
     });
