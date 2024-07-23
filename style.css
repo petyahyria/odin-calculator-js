@@ -50,4 +50,10 @@ body{
     border: 2px solid #0A1128;
     border-radius: 6px;
     background-color: #B0C6CE;
+    text-align: center;
+}
+
+#equals{
+    margin-left: auto;
+    margin-right: 5px;
 }
