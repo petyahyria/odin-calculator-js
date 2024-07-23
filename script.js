@@ -27,6 +27,38 @@ let operate = (operator, a, b) => {
     }
 }
 
+// parameter setOperator is operator that we want to set. 
+// Named like that because we already have global variable called operator
+let setOperator = (setOperator) => {
+    if(operator === null || operator === undefined){
+        operator = setOperator;
+    }else{
+        equals();
+        operator = setOperator;
+    }
+}
+
+let equals = () => {
+    let numbers = input.value.split(operator);
+    console.log(numbers);
+    firstNumber = +numbers[0];
+    console.log(firstNumber);
+    secondNumber = +numbers[1];
+    console.log(secondNumber);
+    console.log(operator);
+    if( !numbers[0] || !numbers[1]){
+        input.value = "error";
+        firstNumber = null;
+        secondNumber = null;
+        operator = null;
+    }else{
+        input.value = `${operate(operator, firstNumber, secondNumber)}`;
+        firstNumber = +input.value;
+        operator = null;
+        secondNumber = null;
+    }
+}
+
 buttons.addEventListener("click", (e) => {
         
         let target = e.target;
@@ -41,8 +73,8 @@ buttons.addEventListener("click", (e) => {
                 input.value += "3";
                 break;
             case "btn+":
+                setOperator("+");
                 input.value += "+";
-                operator = "+";
                 break;
             case "btn4":
                 input.value += "4";
@@ -54,8 +86,8 @@ buttons.addEventListener("click", (e) => {
                 input.value += "6";
                 break;
             case "btn-":
+                setOperator("-");
                 input.value += "-";
-                operator = "-";
                 break;
             case "btn7":
                 input.value += "7";
@@ -67,8 +99,8 @@ buttons.addEventListener("click", (e) => {
                 input.value += "9";
                 break;
             case "btn*":
+                setOperator("*");
                 input.value += "*";
-                operator = "*";
                 break;
             case "btn0":
                 input.value += "0";
@@ -80,25 +112,11 @@ buttons.addEventListener("click", (e) => {
                 input.value = "";
                 break;
             case "btn/":
+                setOperator("/")
                 input.value += "/";
-                operator = "/";
                 break;
             case "btn-equals":
-                let numbers = input.value.split(operator);
-                console.log(numbers);
-                firstNumber = +numbers[0];
-                console.log(firstNumber);
-                secondNumber = +numbers[1];
-                console.log(secondNumber);
-                console.log(operator);
-                if( !numbers[0] || !numbers[1]){
-                    input.value = "error";
-                    firstNumber = null;
-                    secondNumber = null;
-                    operator = null;
-                    break;
-                }
-                input.value = `${operate(operator, firstNumber, secondNumber)}`;
+                equals();
                 break;
         }
     });
