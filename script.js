@@ -8,5 +8,21 @@ let divide = (a, b) => a/b;
 
 let firstNumber;
 let secondNumber;
-let operation;
+let operator;
 
+let operate = (operator, a, b) => {
+    switch (operator) {
+        case "+":
+            add(a, b);
+            break;
+        case "-":
+            substract(a, b);
+            break;
+        case "*":
+            multiply(a, b);
+            break;
+        case "/":
+            divide(a, b);
+            break;
+    }
+}
