@@ -110,6 +110,9 @@ buttons.addEventListener("click", (e) => {
                 break;
             case "btn-ac":
                 input.value = "";
+                firstNumber = null;
+                secondNumber = null;
+                operator = null;
                 break;
             case "btn/":
                 setOperator("/")
