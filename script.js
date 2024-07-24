@@ -59,9 +59,21 @@ let equals = () => {
     }
 }
 
-buttons.addEventListener("click", (e) => {
+buttons.addEventListener("mousedown", (e) => {
+    let target = e.target;
+    if(target.id.includes("btn")){
+        target.style.backgroundColor = "#fff";
+        target.style.border = "2px solid #034078";
+    }
+})
+
+buttons.addEventListener("mouseup", (e) => {
         
         let target = e.target;
+        if(target.id.includes("btn")){
+            target.style.backgroundColor = "#B0C6CE";
+            target.style.border = "2px solid #0A1128";
+        }
         switch (target.id) {
             case "btn1":
                 input.value += "1";
