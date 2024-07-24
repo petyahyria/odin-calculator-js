@@ -40,13 +40,10 @@ let setOperator = (setOperator) => {
 
 let equals = () => {
     let numbers = input.value.split(operator);
-    console.log(numbers);
     firstNumber = +numbers[0];
     console.log(firstNumber);
     secondNumber = +numbers[1];
-    console.log(secondNumber);
-    console.log(operator);
-    if( !numbers[0] || !numbers[1]){
+    if( !numbers[0] || !numbers[1] || operator === "/" && secondNumber === 0) {
         input.value = "error";
         firstNumber = null;
         secondNumber = null;
