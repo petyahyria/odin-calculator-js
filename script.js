@@ -74,6 +74,16 @@ let ifError = () => {
     }
 }
 
+//erase answer when we cklik on numbers (we want to calculate new problem) not on operators (that means we want to continue)
+let eraseAfterEquals = () => {
+    if( firstNumber && !operator && !secondNumber ){
+        input.value = "";
+        firstNumber = null;
+        secondNumber = null;
+        operator = null;
+    }
+}
+
 buttons.addEventListener("mousedown", (e) => {
     let target = e.target;
     if(target.id.includes("btn")){
@@ -91,14 +101,18 @@ buttons.addEventListener("mouseup", (e) => {
     switch (target.id) {
         case "btn1":
             ifError();
+            eraseAfterEquals();
             input.value += "1";
             break;
         case "btn2":
             ifError();
+            eraseAfterEquals();
             input.value += "2";
             break;
         case "btn3":
             ifError();
+            eraseAfterEquals();
+            eraseAfterEquals();
             input.value += "3";
             break;
         case "btn+":
@@ -108,14 +122,17 @@ buttons.addEventListener("mouseup", (e) => {
             break;
         case "btn4":
             ifError();
+            eraseAfterEquals();
             input.value += "4";
             break;
         case "btn5":
             ifError();
+            eraseAfterEquals();
             input.value += "5";
             break;
         case "btn6":
             ifError();
+            eraseAfterEquals();
             input.value += "6";
             break;
         case "btn-":
@@ -125,14 +142,17 @@ buttons.addEventListener("mouseup", (e) => {
             break;
         case "btn7":
             ifError();
+            eraseAfterEquals();
             input.value += "7";
             break;
         case "btn8":
             ifError();
+            eraseAfterEquals();
             input.value += "8";
             break;
         case "btn9":
             ifError();
+            eraseAfterEquals();
             input.value += "9";
             break;
         case "btn*":
@@ -142,11 +162,15 @@ buttons.addEventListener("mouseup", (e) => {
             break;
         case "btn0":
             ifError();
+            eraseAfterEquals();
             input.value += "0";
             break;
         case "btn-c":
-            ifError();
-            input.value = input.value.slice(0, -1); 
+            if(input.value === "error"){
+                ifError();
+            }else{
+                input.value = input.value.slice(0, -1); 
+            }
             break;
         case "btn-ac":
             ifError();
@@ -174,14 +198,17 @@ addEventListener("keydown", (e) => {
             break;
         case "1":
             ifError();
+            eraseAfterEquals();
             input.value += "1";
             break;
         case "2":
             ifError();
+            eraseAfterEquals();
             input.value += "2";
             break;
         case "3":
             ifError();
+            eraseAfterEquals();
             input.value += "3";
             break;
         case "+":
@@ -191,14 +218,17 @@ addEventListener("keydown", (e) => {
             break;
         case "4":
             ifError();
+            eraseAfterEquals();
             input.value += "4";
             break;
         case "5":
             ifError();
+            eraseAfterEquals();
             input.value += "5";
             break;
         case "6":
             ifError();
+            eraseAfterEquals();
             input.value += "6";
             break;
         case "-":
@@ -208,14 +238,17 @@ addEventListener("keydown", (e) => {
             break;
         case "7":
             ifError();
+            eraseAfterEquals();
             input.value += "7";
             break;
         case "8":
             ifError();
+            eraseAfterEquals();
             input.value += "8";
             break;
         case "9":
             ifError();
+            eraseAfterEquals();
             input.value += "9";
             break;
         case "*":
@@ -225,6 +258,7 @@ addEventListener("keydown", (e) => {
             break;
         case "0":
             ifError();
+            eraseAfterEquals();
             input.value += "0";
             break;
         case "/":
