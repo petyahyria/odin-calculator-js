@@ -4,7 +4,16 @@ const buttons = document.querySelector("#buttons");
 let add = (a, b) => a+b;
 let substract = (a, b) => a-b;
 let multiply = (a, b) => a*b;
-let divide = (a, b) => a/b;
+let divide = (a, b) => {
+    let result = a/b;
+    if(result.toString().includes(".")){
+        if(result.toString().split(".")[1].length > 5){
+            return result.toFixed(5);
+        }
+    }
+    return result;
+
+};
 
 let firstNumber;
 let secondNumber;
